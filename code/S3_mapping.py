@@ -58,12 +58,12 @@ ip_FVF = ndimage.map_coordinates(FVF, ip_data_coords.T,
 # %% Field variable scatter plots
 M4IP.Int_point_plotting(ip_coords, ip_phi, Nplots=1, unit='$^\\circ$',
                         variable='$\\phi$',
-                        fig_name=sample_name+'_IP-3D misalignment',
+                        fig_name='fig8_' + sample_name + '_IP-3D misalignment',
                         fig_path=result_path)
 
-M4IP.Int_point_plotting(ip_coords, ip_FVF, Nplots=1, unit='-',
+M4IP.Int_point_plotting(ip_coords, ip_FVF, Nplots=1, unit='',
                         variable='FVF', vmin=[0], vmax=[1],
-                        fig_name=sample_name+'_IP-3D FVF',
+                        fig_name='fig9_' + sample_name+'_IP-3D FVF',
                         fig_path=result_path)
 
 # %% Create dataframe for easy group iteration.

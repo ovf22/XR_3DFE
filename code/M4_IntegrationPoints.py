@@ -77,15 +77,15 @@ def Int_point_plotting(ip_coords, ip_data_set, Nplots, vmin=[-10], vmax=[10],
         clb.ax.set_title(variable)
 
         if ip_data_set.ndim == 1:
-            clb.ax.set_yticklabels(['$<$'+str(round(vmin[i]))+unit,
-                                    str(round(vmin[i]/2))+unit,
-                                    '0'+unit, str(round(vmax[i]/2))+unit,
-                                    '$>$'+str(round(vmax[i]))+unit])
+            clb.ax.set_yticklabels(['$<$'+str(round(vmin[i], 1))+unit,
+                                    str(round(vmin[i]/2, 1))+unit,
+                                    '0'+unit, str(round(vmax[i]/2, 1))+unit,
+                                    '$>$'+str(round(vmax[i], 1))+unit])
         else:
-            clb.ax.set_yticklabels([str(round(vmin[i]))+unit,
-                                    str(round(vmin[i]/2))+unit,
-                                    '0'+unit, str(round(vmax[i]/2))+unit,
-                                    str(round(vmax[i]))+unit])
+            clb.ax.set_yticklabels([str(round(vmin[i], 1))+unit,
+                                    str(round(vmin[i]/2, 1))+unit,
+                                    '0'+unit, str(round(vmax[i]/2, 1))+unit,
+                                    str(round(vmax[i], 1))+unit])
 
         if sp_title is not None:
             ax.title.set_text(sp_title[i])

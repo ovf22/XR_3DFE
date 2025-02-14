@@ -57,7 +57,6 @@ VOXEL_SIZE = abs(nii_file.affine[0, 0])
 # Set known fiber diameter in micro meters.
 FIBER_DIAMETER = 7
 
-
 # Normalize intensity to grayscale range
 I_min, I_max = np.quantile(data, [0.0005, 0.9995])
 
@@ -70,7 +69,7 @@ M1TH.tomo_plot_3(data,
                  y_slice=int(data_shape[1]/2),
                  z_slice=int(data_shape[2]/2),
                  figsize=(12, 10),
-                 fig_name=sample_name+'_Tomo_fig',
+                 fig_name='fig1_' + sample_name+'_Tomo_fig',
                  fig_path=result_path)
 
 # %% Structure tensor analysis
@@ -134,8 +133,8 @@ Sy = data_s.shape[1]//2
 M1TH.tomo_plot_3_overlay(data_s, phi_xy, phi_xz, y_slice=Sy, z_slice=Sz,
                          alpha=0.5, vmin=-5, vmax=5, variable='$\\phi_{ij}$',
                          unit='[$^\\circ$]', cmap='coolwarm', title='',
-                         fig_name='Fiber_misalignment_overlay',
-                         fig_path='result_path', figsize=(10, 10))
+                         fig_name='fig2_' + sample_name + '_Fiber_misalignment_overlay',
+                         fig_path=result_path, figsize=(10, 10))
 
 # Calculate the spherical constant from the eigenvectors and define a threshold
 # for masking out high density particals
@@ -147,7 +146,8 @@ FVF_measured = 0.67  # Measured using a burn-off test
 
 # Define the upper and lower thresholds for estimating the FVF distribution
 data_s, LT, UT, FVF_model = M2A.FVF_limits(data_s, FVF_measured=FVF_measured,
-                                           fig_path=result_path)
+                                           fig_path=result_path, 
+                                           fig_name='fig3_' + sample_name + '_data_intensity_hist')
 
 # Copy the gray scale dataset and normalize according the ramping function
 data_bin = np.copy(data_s).astype(float)
@@ -162,7 +162,7 @@ M1TH.tomo_plot_3(data_bin,
                  y_slice=int(data_bin.shape[1]/2),
                  z_slice=int(data_bin.shape[2]/2),
                  figsize=(12, 10),
-                 fig_name='data_bin_FVF',
+                 fig_name='fig4_' + sample_name + '_data_bin_FVF',
                  fig_path='',
                  FrameOn=False)
 
@@ -178,7 +178,7 @@ M2A.fig_with_colorbar(
     variable='$V_f$ [-]',
     x_str='z',
     y_str='y',
-    fig_name='FVF_overlay_intFVFbin2',
+    fig_name='fig5_' + sample_name + '_bin_FVF_overlay',
     fig_path='')
 
 # Define the kernel window used for convolution
@@ -213,7 +213,7 @@ ax.hist(FVF.ravel(), bins=256, density=True, label='$K_{size}$ = ' +
         str(round(k_dim / FIBER_DIAMETER, 1)) + '[Number of fibers]')
 ax.set_xlabel('FVF [-]')
 ax.set_ylabel('Density [-]')
-plt.savefig(result_path + 'FVF_hist.png')
+plt.savefig(result_path + 'fig6_' + sample_name + '_FVF_hist.png')
 plt.show()
 
 # %% Mask field variables and plot
@@ -223,7 +223,7 @@ phi[cs > cs_thres] = 0.
 M1TH.tomo_plot_3_overlay(data_s, FVF, FVF, y_slice=Sy, z_slice=Sz,
                          alpha=0.5, vmin=0, vmax=1, variable='$V_f$',
                          unit='[$-$]', cmap='PRGn', title='',
-                         fig_name='FVF_overlay',
+                         fig_name='fig7_' + sample_name + '_FVF_overlay',
                          fig_path=result_path, figsize=(10, 10))
 
 # %% Scaling padded regions

@@ -327,7 +327,7 @@ def tomo_plot_3_overlay(data, field1, field2, y_slice=0, z_slice=0,
     im = f3_ax2.imshow(field2[:, y_slice, :].T, alpha=alpha, cmap=cmap,
                        vmin=vmin, vmax=vmax)
 
-    cb_ax = fig3.add_axes([1.05, 0.32, 0.02, 0.5])
+    cb_ax = fig3.add_axes([1.01, 0.32, 0.02, 0.5])
     cbar = fig3.colorbar(im, cax=cb_ax)
 
     # Set the colorbar ticks and tick labels

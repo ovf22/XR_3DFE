@@ -7,11 +7,11 @@
 Env_installed="yes"
 
 ## Define data names for analysis
-declare -a sample_names=("k1")
+declare -a sample_names=("CFPP_k2")
 
 # Declare crop parameter and kernel multiplier for all datasets in samples_names
 crop_height=(300)
-kernel_multiplier_FVF=(1)
+kernel_multiplier_FVF=(2)
 
 ## First time runnig the script we need to install a Python environment
 if [ "$Env_installed" = "no" ]; then
@@ -53,8 +53,8 @@ for sample_name in ${sample_names[@]}; do
 	fi
 
 	##### Analyse the CT images and define model dimensions
-	sed -e "s/shell_sample_name/$sample_name/;s/shell_crop/$crop/;s/shell_kernel/$k_mul/" S1_STanalysis.py > "${sample_name}_S1_STanalysis.py"
-	python3 "${sample_name}_S1_STanalysis.py"
+	sed -e "s/shell_sample_name/$sample_name/;s/shell_crop/$crop/;s/shell_kernel/$k_mul/" S1_FVF_ST.py > "${sample_name}_S1_FVF_ST.py"
+	python3 "${sample_name}_S1_FVF_ST.py"
 	echo "<> CT image has been analysed and model dimensions are exported"
 	
 	##### Generate FE-model and export integration points

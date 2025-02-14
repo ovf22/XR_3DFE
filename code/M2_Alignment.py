@@ -209,7 +209,7 @@ def FVF_limits(data, FVF_measured=0.67,
     data[data > 254] = thres_lower
 
     bin_div = 5
-    fx_init = np.linspace(0, 254, 254*bin_div+1)
+    fx_init = np.linspace(0, 254, 254*bin_div + 1) 
     hist, bin_edges = np.histogram(data.ravel(),
                                    bins=fx_init.size, density=True)
 

@@ -87,7 +87,7 @@ M4IP.Int_point_plotting(ip_coords, S_local,
                         S_local.shape[1],
                         vmin=SLmin, vmax=SLmax,
                         unit='MPa', variable='',
-                        fig_name=sample_name+'_local_S',
+                        fig_name='fig10_' + sample_name+'_local_S',
                         fig_path=result_path,
                         fig_title='Stress in local coordinate system',
                         figsize=(25, 6),
@@ -99,7 +99,7 @@ M4IP.Int_point_plotting(ip_coords, S_global,
                         S_global.shape[1],
                         vmin=SGmin, vmax=SGmax,
                         unit='MPa', variable='',
-                        fig_name=sample_name+'_global_S',
+                        fig_name='fig11_' + sample_name+'_global_S',
                         fig_path=result_path,
                         fig_title='Stress in global coordinate system',
                         figsize=(25, 6),
@@ -114,7 +114,7 @@ M4IP.Int_point_plotting(ip_coords, E_local,
                         E_local.shape[1],
                         vmin=Emin, vmax=Emax,
                         unit='%', variable='$\\epsilon_{ij}$',
-                        fig_name=sample_name + '_local_E',
+                        fig_name='fig12_' + sample_name + '_local_E',
                         fig_path=result_path,
                         fig_title='Strain in local coordinate system',
                         figsize=(25, 6),
@@ -181,4 +181,4 @@ plt.legend()
 plt.xlabel('Strain [$\\%$]')
 plt.ylabel('Stress [MPa]')
 
-plt.savefig(result_path + sample_name + '_Stress_strain.png')
+plt.savefig(result_path + 'fig13_' + sample_name + '_Stress_strain.png')
