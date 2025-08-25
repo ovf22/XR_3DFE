@@ -16,7 +16,7 @@ import M2_Alignment as M2A
 
 # %%  File names and directory
 sample_name = 'shell_sample_name'
-data_name = 'S50crop'
+data_name = 'CFPP_3D'
 file_name = data_name + '.nii'
 
 data_path = '../data'

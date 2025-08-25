@@ -47,7 +47,7 @@ This program is based on the Anaconda Distribution, where a virtual environment 
 		- Fortran file with USDFLD and ORIENT functions. 
 		
 - data
-	* S50crop.nii
+	* CFPP_3D.nii
 		- Nifti file of X-ray computed tomography data from carbon fiber-reinforced Vinyl Ester pultruded profile.
 	
 - results
